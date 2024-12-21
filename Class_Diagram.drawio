@@ -1,0 +1,133 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="25.0.3">
+  <diagram name="Page-1" id="_3B3dI3Zr4QaUpXjVU7E">
+    <mxGraphModel dx="765" dy="440" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-1" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;CLASS DIAGRAM&lt;/h1&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="130" y="80" width="370" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-2" value="BUKU" style="swimlane;whiteSpace=wrap;html=1;startSize=50;" vertex="1" parent="1">
+          <mxGeometry x="350" y="440" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-4" value="Id_Buku : int" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-2">
+          <mxGeometry x="60" y="50" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-5" value="Judul_buku : str" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-2">
+          <mxGeometry x="50" y="70" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-7" value="pengarang : str" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-2">
+          <mxGeometry x="55" y="90" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-13" value="Insert_data ()&lt;div&gt;Update_data ()&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="560" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="4IPkG_EUPkneEFuR-mPL-18" target="4IPkG_EUPkneEFuR-mPL-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-18" value="BUKU ASING" style="swimlane;whiteSpace=wrap;html=1;startSize=50;" vertex="1" parent="1">
+          <mxGeometry x="610" y="120" width="200" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-19" value="Id_Buku : int" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-18">
+          <mxGeometry x="60" y="50" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-20" value="Judul_buku : str" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-18">
+          <mxGeometry x="50" y="70" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-21" value="pengarang : str" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-18">
+          <mxGeometry x="55" y="90" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-62" value="Genre_buku : str" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-18">
+          <mxGeometry x="50" y="110" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-63" value="Tanggal_rilis : date" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-18">
+          <mxGeometry x="45" y="128" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-22" value="Insert_data ()&lt;div&gt;Update_data ()&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="300" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="4IPkG_EUPkneEFuR-mPL-25" target="4IPkG_EUPkneEFuR-mPL-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-25" value="BUKU ASING" style="swimlane;whiteSpace=wrap;html=1;startSize=50;" vertex="1" parent="1">
+          <mxGeometry x="600" y="630" width="200" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-26" value="Id_Buku : int" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-25">
+          <mxGeometry x="60" y="50" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-27" value="Judul_buku : str" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-25">
+          <mxGeometry x="50" y="70" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-28" value="pengarang : str" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-25">
+          <mxGeometry x="55" y="90" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-60" value="Genre_buku : str" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-25">
+          <mxGeometry x="50" y="110" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-61" value="Tanggal_rilis : date" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-25">
+          <mxGeometry x="45" y="128" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-29" value="Insert_data ()&lt;div&gt;Update_data ()&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="790" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-32" value="Anggota Perpus" style="swimlane;whiteSpace=wrap;html=1;startSize=50;" vertex="1" parent="1">
+          <mxGeometry x="100" y="170" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-33" value="Id_anggota : int" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-32">
+          <mxGeometry x="50" y="50" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-34" value="Nama : str" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-32">
+          <mxGeometry x="65" y="80" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-36" value="Insert_data ()&lt;div&gt;Update_data ()&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="290" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-37" value="Petugas Perpus" style="swimlane;whiteSpace=wrap;html=1;startSize=50;" vertex="1" parent="1">
+          <mxGeometry x="100" y="750" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-38" value="Id_petugas : int" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-37">
+          <mxGeometry x="50" y="50" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-39" value="Nama : str" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-37">
+          <mxGeometry x="65" y="70" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-40" value="Insert_data ()&lt;div&gt;Update_data ()&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="850" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-41" value="Pinjam Buku" style="swimlane;whiteSpace=wrap;html=1;startSize=50;" vertex="1" parent="1">
+          <mxGeometry x="100" y="420" width="200" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-42" value="Id : int" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-41">
+          <mxGeometry x="75" y="50" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-43" value="Tanggal pinjam : date" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-41">
+          <mxGeometry x="35" y="70" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-47" value="id_buku&amp;nbsp;int&lt;div&gt;&lt;br&gt;&lt;div&gt;tanggal_kembali: date&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;id_petugas: int&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="4IPkG_EUPkneEFuR-mPL-41">
+          <mxGeometry x="30" y="100" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-44" value="Insert_data ()&lt;div&gt;Update_data ()&lt;/div&gt;&lt;div&gt;pilih_buku ()&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="605" width="200" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-51" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="4IPkG_EUPkneEFuR-mPL-41" target="4IPkG_EUPkneEFuR-mPL-36">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="480" as="sourcePoint" />
+            <mxPoint x="360" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-52" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="4IPkG_EUPkneEFuR-mPL-37" target="4IPkG_EUPkneEFuR-mPL-44">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="710" as="sourcePoint" />
+            <mxPoint x="360" y="630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4IPkG_EUPkneEFuR-mPL-54" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" target="4IPkG_EUPkneEFuR-mPL-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="530" as="sourcePoint" />
+            <mxPoint x="360" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
