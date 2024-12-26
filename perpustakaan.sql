@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 21, 2024 at 05:13 AM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Host: localhost
+-- Generation Time: Dec 26, 2024 at 08:10 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,10 +28,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `buku` (
-  `id_buku` int NOT NULL,
+  `id_buku` int(11) NOT NULL,
   `judul_buku` varchar(255) NOT NULL,
   `genre` varchar(55) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `buku`
+--
+
+INSERT INTO `buku` (`id_buku`, `judul_buku`, `genre`) VALUES
+(1, 'Cara Menjadi Kaya', 'Panduan'),
+(2, 'Cara Bersyukur', 'Motivasi');
 
 -- --------------------------------------------------------
 
@@ -40,9 +48,18 @@ CREATE TABLE `buku` (
 --
 
 CREATE TABLE `peminjam` (
-  `id_peminjam` int NOT NULL,
-  `nama_peminjam` varchar(55) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_peminjam` int(11) NOT NULL,
+  `nama_peminjam` varchar(55) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `peminjam`
+--
+
+INSERT INTO `peminjam` (`id_peminjam`, `nama_peminjam`, `password`) VALUES
+(1, 'test', 'test123'),
+(2, 'test lagi', 'test kedua123');
 
 -- --------------------------------------------------------
 
@@ -51,12 +68,23 @@ CREATE TABLE `peminjam` (
 --
 
 CREATE TABLE `peminjaman` (
-  `id_peminjaman` int NOT NULL,
-  `id_buku` int DEFAULT NULL,
-  `id_petugas` int DEFAULT NULL,
-  `id_peminjam` int DEFAULT NULL,
-  `tanggal` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_peminjaman` int(11) NOT NULL,
+  `id_buku` int(11) DEFAULT NULL,
+  `id_petugas` int(11) DEFAULT NULL,
+  `id_peminjam` int(11) DEFAULT NULL,
+  `tanggal` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `peminjaman`
+--
+
+INSERT INTO `peminjaman` (`id_peminjaman`, `id_buku`, `id_petugas`, `id_peminjam`, `tanggal`) VALUES
+(2, 1, 1, 1, '2024-12-26 14:03:34'),
+(3, 2, 1, 1, '2024-12-26 14:04:13'),
+(4, 1, 1, 2, '2024-12-26 14:05:22'),
+(5, 2, 2, 2, '2024-12-26 14:06:49'),
+(6, 2, 2, 1, '2024-12-26 14:08:34');
 
 -- --------------------------------------------------------
 
@@ -65,9 +93,18 @@ CREATE TABLE `peminjaman` (
 --
 
 CREATE TABLE `petugas` (
-  `id_petugas` int NOT NULL,
-  `nama_petugas` varchar(55) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_petugas` int(11) NOT NULL,
+  `nama_petugas` varchar(55) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `petugas`
+--
+
+INSERT INTO `petugas` (`id_petugas`, `nama_petugas`, `password`) VALUES
+(1, 'andi', 'andiganteng'),
+(2, 'galih', 'galihanjay');
 
 --
 -- Indexes for dumped tables
@@ -108,25 +145,25 @@ ALTER TABLE `petugas`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `peminjam`
 --
 ALTER TABLE `peminjam`
-  MODIFY `id_peminjam` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_peminjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id_petugas` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

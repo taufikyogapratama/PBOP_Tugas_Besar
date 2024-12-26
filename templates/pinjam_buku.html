@@ -1,11 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Insert tabel peminjaman</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <button onclick="window.location.href='/'">Kembali</button>
+    <h1 style="text-align: center; margin: 20px 0;">Silahkan Meminjam Buku</h1>
+</header>
+<main>
+    <!-- Menampilkan Flash Message jika ada -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="flash {{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    <p><strong>Note:</strong> Hanya bisa meminjam 1 buku untuk setiap sesi</p>
+    <form method="POST">
+        <section class="Display Daftar Buku">
+            <h3>Daftar Buku</h3>
+            <ul>
+                {% for buku in buku_list %}
+                    <li>
+                        {{ buku[1] }}  <!-- Judul Buku -->
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <!-- Formulir untuk memilih buku -->
+        <label for="inp_buku">Masukkan Judul Buku: </label>
+        <input type="text" id="inp_buku" name="judul_buku" required>
+
+        <!-- Pilih Petugas -->
+        <section class="Petugas">
+            <h3>Pilih Petugas</h3>
+            <select name="petugas">
+                {% for petugas in petugas_list %}
+                    <option value="{{ petugas[0] }}">{{ petugas[1] }}</option>
+                {% endfor %}
+            </select>
+        </section>
+
+        <button type="submit">Pinjam Buku</button>
+    </form>
+</main>
+{% endblock %}
