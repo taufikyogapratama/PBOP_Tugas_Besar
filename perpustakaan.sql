@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 27, 2024 at 08:01 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost:3306
+-- Generation Time: Dec 27, 2024 at 04:08 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `buku` (
-  `id_buku` int(11) NOT NULL,
-  `judul_buku` varchar(255) NOT NULL,
-  `genre` varchar(55) NOT NULL
+  `id_buku` int NOT NULL,
+  `judul_buku` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `genre` varchar(55) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -39,7 +39,8 @@ CREATE TABLE `buku` (
 
 INSERT INTO `buku` (`id_buku`, `judul_buku`, `genre`) VALUES
 (1, 'Cara Menjadi Kaya', 'Panduan'),
-(2, 'Cara Bersyukur', 'Motivasi');
+(2, 'Cara Bersyukur', 'Motivasi'),
+(5, 'Cara buat skripsi pakai AI', 'Tutorial');
 
 -- --------------------------------------------------------
 
@@ -48,9 +49,9 @@ INSERT INTO `buku` (`id_buku`, `judul_buku`, `genre`) VALUES
 --
 
 CREATE TABLE `peminjam` (
-  `id_peminjam` int(11) NOT NULL,
-  `nama_peminjam` varchar(55) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `id_peminjam` int NOT NULL,
+  `nama_peminjam` varchar(55) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -61,7 +62,8 @@ INSERT INTO `peminjam` (`id_peminjam`, `nama_peminjam`, `password`) VALUES
 (1, 'test', 'test123'),
 (2, 'test lagi', 'test kedua123'),
 (3, 'Burhan', 'burhangaming'),
-(4, 'ujang', 'ujanggg');
+(4, 'ujang', 'ujanggg'),
+(5, 'windah', 'gggaming');
 
 -- --------------------------------------------------------
 
@@ -70,11 +72,11 @@ INSERT INTO `peminjam` (`id_peminjam`, `nama_peminjam`, `password`) VALUES
 --
 
 CREATE TABLE `peminjaman` (
-  `id_peminjaman` int(11) NOT NULL,
-  `id_buku` int(11) DEFAULT NULL,
-  `id_petugas` int(11) DEFAULT NULL,
-  `id_peminjam` int(11) DEFAULT NULL,
-  `tanggal` datetime DEFAULT current_timestamp()
+  `id_peminjaman` int NOT NULL,
+  `id_buku` int DEFAULT NULL,
+  `id_petugas` int DEFAULT NULL,
+  `id_peminjam` int DEFAULT NULL,
+  `tanggal` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -84,7 +86,8 @@ CREATE TABLE `peminjaman` (
 INSERT INTO `peminjaman` (`id_peminjaman`, `id_buku`, `id_petugas`, `id_peminjam`, `tanggal`) VALUES
 (8, 1, 1, 4, '2024-12-27 13:50:07'),
 (9, 2, 2, 3, '2024-12-27 13:50:44'),
-(10, 2, 2, 3, '2024-12-27 14:00:12');
+(11, 1, 2, 5, '2024-12-27 22:52:18'),
+(12, 5, 4, 5, '2024-12-27 23:07:10');
 
 -- --------------------------------------------------------
 
@@ -93,9 +96,9 @@ INSERT INTO `peminjaman` (`id_peminjaman`, `id_buku`, `id_petugas`, `id_peminjam
 --
 
 CREATE TABLE `petugas` (
-  `id_petugas` int(11) NOT NULL,
-  `nama_petugas` varchar(55) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `id_petugas` int NOT NULL,
+  `nama_petugas` varchar(55) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -105,7 +108,8 @@ CREATE TABLE `petugas` (
 INSERT INTO `petugas` (`id_petugas`, `nama_petugas`, `password`) VALUES
 (1, 'andi', 'andiganteng'),
 (2, 'galih', 'galihanjay'),
-(3, 'test tambah', 'testtambah123');
+(3, 'test tambah', 'testtambah123'),
+(4, 'Joko', 'Widodo');
 
 --
 -- Indexes for dumped tables
@@ -146,25 +150,25 @@ ALTER TABLE `petugas`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_buku` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `peminjam`
 --
 ALTER TABLE `peminjam`
-  MODIFY `id_peminjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_peminjam` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_peminjaman` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_petugas` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

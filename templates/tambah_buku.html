@@ -10,6 +10,6 @@
     <input type="text" id="genre" name="genre" required><br><br>
 
     <button type="submit">Tambah</button>
-    <button><a href="{{ url_for('daftar_buku') }}" style="text-decoration: none;">Batal</a></button>
+    <button onclick="window.location.href='/daftar_buku'">Batal</button>
 </form>
 {% endblock %}
