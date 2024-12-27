@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 26, 2024 at 08:10 AM
+-- Generation Time: Dec 27, 2024 at 08:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -59,7 +59,9 @@ CREATE TABLE `peminjam` (
 
 INSERT INTO `peminjam` (`id_peminjam`, `nama_peminjam`, `password`) VALUES
 (1, 'test', 'test123'),
-(2, 'test lagi', 'test kedua123');
+(2, 'test lagi', 'test kedua123'),
+(3, 'Burhan', 'burhangaming'),
+(4, 'ujang', 'ujanggg');
 
 -- --------------------------------------------------------
 
@@ -80,11 +82,9 @@ CREATE TABLE `peminjaman` (
 --
 
 INSERT INTO `peminjaman` (`id_peminjaman`, `id_buku`, `id_petugas`, `id_peminjam`, `tanggal`) VALUES
-(2, 1, 1, 1, '2024-12-26 14:03:34'),
-(3, 2, 1, 1, '2024-12-26 14:04:13'),
-(4, 1, 1, 2, '2024-12-26 14:05:22'),
-(5, 2, 2, 2, '2024-12-26 14:06:49'),
-(6, 2, 2, 1, '2024-12-26 14:08:34');
+(8, 1, 1, 4, '2024-12-27 13:50:07'),
+(9, 2, 2, 3, '2024-12-27 13:50:44'),
+(10, 2, 2, 3, '2024-12-27 14:00:12');
 
 -- --------------------------------------------------------
 
@@ -104,7 +104,8 @@ CREATE TABLE `petugas` (
 
 INSERT INTO `petugas` (`id_petugas`, `nama_petugas`, `password`) VALUES
 (1, 'andi', 'andiganteng'),
-(2, 'galih', 'galihanjay');
+(2, 'galih', 'galihanjay'),
+(3, 'test tambah', 'testtambah123');
 
 --
 -- Indexes for dumped tables
@@ -145,25 +146,25 @@ ALTER TABLE `petugas`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `peminjam`
 --
 ALTER TABLE `peminjam`
-  MODIFY `id_peminjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_peminjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <h1>Data Peminjaman Buku</h1>
+    <button onclick="window.location.href='/'">Kembali</button>
+    <br><br>
+    <button onclick="window.location.href='/daftar_buku'">Daftar Buku</button>
+    <button onclick="window.location.href='/petugas'">Petugas</button>
+    <button onclick="window.location.href='/daftar_akun_user'">Akun User</button>
+</header>
+<main>
+    <table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid black;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">No</th>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">Nama Peminjam</th>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">Judul Buku</th>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">Nama Petugas</th>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">Tanggal</th>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">Hapus</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for peminjaman in data_peminjaman %}
+                <tr>
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">{{ loop.index }}</td>
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">{{ peminjaman[1] }}</td>
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">{{ peminjaman[2] }}</td>
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">{{ peminjaman[3] }}</td>
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">{{ peminjaman[4] }}</td>
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                        <form action="{{ url_for('hapus_peminjaman', id_peminjaman=peminjaman[0]) }}" method="POST" style="display:inline;" onsubmit="return confirmHapus();">
+                            <button type="submit" style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+<script>
+    function confirmHapus() {
+        return confirm("Apakah Anda yakin ingin menghapus data ini?");
+    }
+</script>
+{% endblock %}

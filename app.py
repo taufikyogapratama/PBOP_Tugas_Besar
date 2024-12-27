@@ -39,7 +39,7 @@ def login():
 
         if petugas:
             cur.close()
-            return redirect(url_for("halaman_admin"))  # Jika ditemukan di tabel `petugas`
+            return redirect(url_for("admin_peminjaman"))  # Jika ditemukan di tabel `petugas`
 
         cur.close()
         return redirect(url_for("register"))  # Jika tidak ditemukan di kedua tabel
@@ -63,9 +63,98 @@ def register_user():
         cur.close()
         return redirect(url_for("login"))
 
-@app.route("/halaman_admin")
-def halaman_admin():
-    return render_template("admin.html")
+@app.route("/admin_peminjaman")
+def admin_peminjaman():
+    cur = mysql.connection.cursor()
+
+    # Query untuk mendapatkan data yang diminta
+    cur.execute("""
+        SELECT peminjaman.id_peminjaman, 
+               peminjam.nama_peminjam, 
+               buku.judul_buku, 
+               petugas.nama_petugas, 
+               peminjaman.tanggal 
+        FROM peminjaman
+        JOIN peminjam ON peminjaman.id_peminjam = peminjam.id_peminjam
+        JOIN buku ON peminjaman.id_buku = buku.id_buku
+        JOIN petugas ON peminjaman.id_petugas = petugas.id_petugas
+    """)
+    data_peminjaman = cur.fetchall()  # Mengambil semua hasil query
+    cur.close()
+
+    # Pass data ke template
+    return render_template("admin_df_peminjaman.html", data_peminjaman=data_peminjaman)
+
+@app.route("/hapus_peminjaman/<int:id_peminjaman>", methods=["POST"])
+def hapus_peminjaman(id_peminjaman):
+    cur = mysql.connection.cursor()
+    
+    # Hapus data berdasarkan id_peminjaman
+    cur.execute("DELETE FROM peminjaman WHERE id_peminjaman = %s", (id_peminjaman,))
+    mysql.connection.commit()
+    cur.close()
+    
+    # flash("Data peminjaman berhasil dihapus!", "success")
+    return redirect(url_for("admin_peminjaman"))
+
+@app.route("/daftar_buku")
+def daftar_buku():
+    cur = mysql.connection.cursor()
+
+    # Ambil id_buku, judul_buku, dan genre dari tabel buku
+    cur.execute("SELECT id_buku, judul_buku, genre FROM buku")
+    buku_list = cur.fetchall()  # Mengambil semua hasil query
+    cur.close()
+
+    # Pass data buku ke template
+    return render_template("daftar_buku.html", buku_list=buku_list)
+
+@app.route("/edit_buku/<int:id_buku>", methods=["GET", "POST"])
+def edit_buku(id_buku):
+    cur = mysql.connection.cursor()
+
+    if request.method == "POST":
+        judul_buku = request.form['judul_buku']
+        genre = request.form['genre']
+
+        # Update data buku di database
+        cur.execute("UPDATE buku SET judul_buku = %s, genre = %s WHERE id_buku = %s", 
+                    (judul_buku, genre, id_buku))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for("daftar_buku"))
+
+    # Ambil data buku untuk diisi di form
+    cur.execute("SELECT * FROM buku WHERE id_buku = %s", (id_buku,))
+    buku = cur.fetchone()
+    cur.close()
+    return render_template("edit_buku.html", buku=buku)
+
+@app.route("/hapus_buku/<int:id_buku>", methods=["POST"])
+def hapus_buku(id_buku):
+    cur = mysql.connection.cursor()
+
+    # Hapus buku dari database
+    cur.execute("DELETE FROM buku WHERE id_buku = %s", (id_buku,))
+    mysql.connection.commit()
+    cur.close()
+    return redirect(url_for("daftar_buku"))
+
+@app.route("/tambah_buku", methods=["GET", "POST"])
+def tambah_buku():
+    if request.method == "POST":
+        judul_buku = request.form['judul_buku']
+        genre = request.form['genre']
+
+        # Insert data buku ke database
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO buku (judul_buku, genre) VALUES (%s, %s)", (judul_buku, genre))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for("daftar_buku"))
+
+    return render_template("tambah_buku.html")
+
 
 @app.route("/pinjam_buku", methods=["GET", "POST"])
 def pinjam_buku():
@@ -113,6 +202,47 @@ def pinjam_buku():
 @app.route("/berhasil")
 def berhasil():
     return render_template("selesai.html")
+
+@app.route("/petugas")
+def petugas():
+    cur = mysql.connection.cursor()
+
+    # Query untuk mengambil semua data petugas
+    cur.execute("SELECT id_petugas, nama_petugas, password FROM petugas")
+    petugas_list = cur.fetchall()  # Mengambil semua hasil query
+    cur.close()
+
+    # Pass data petugas ke template
+    return render_template("petugas.html", petugas_list=petugas_list)
+
+@app.route("/tambah_petugas", methods=["GET", "POST"])
+def tambah_petugas():
+    if request.method == "POST":
+        nama_petugas = request.form['nama_petugas']
+        password = request.form['password']
+
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO petugas (nama_petugas, password) VALUES (%s, %s)", 
+                    (nama_petugas, password))
+        mysql.connection.commit()
+        cur.close()
+
+        return redirect(url_for("petugas"))  # Redirect kembali ke halaman petugas
+
+    return render_template("tambah_petugas.html")
+
+@app.route("/daftar_akun_user")
+def daftar_akun_user():
+    # Ambil data dari tabel peminjam
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT id_peminjam, nama_peminjam, password FROM peminjam")
+    peminjam_list = cur.fetchall()
+    cur.close()
+
+    # Pass data peminjam ke template
+    return render_template("peminjam.html", peminjam_list=peminjam_list)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

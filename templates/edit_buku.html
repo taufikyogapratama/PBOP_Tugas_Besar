@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Edit Buku</h1>
+<form action="{{ url_for('edit_buku', id_buku=buku[0]) }}" method="POST">
+    <label for="judul_buku">Judul Buku:</label><br>
+    <input type="text" id="judul_buku" name="judul_buku" value="{{ buku[1] }}" required><br><br>
+
+    <label for="genre">Genre:</label><br>
+    <input type="text" id="genre" name="genre" value="{{ buku[2] }}" required><br><br>
+
+    <button type="submit">Simpan</button>
+    <button><a href="{{ url_for('daftar_buku') }}" style="text-decoration: none;">Batal</a></button>
+</form>
+{% endblock %}

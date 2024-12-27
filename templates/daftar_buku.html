@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <h1>Daftar Buku</h1>
+    <button onclick="window.location.href='/'">Kembali</button>
+    <br><br>
+    <button onclick="window.location.href='/admin_peminjaman'">Peminjaman</button>
+    <button onclick="window.location.href='/petugas'">Petugas</button>
+    <button onclick="window.location.href='/daftar_akun_user'">Akun User</button>
+</header>
+<main>
+    <table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid black;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">No</th>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">Judul Buku</th>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">Genre</th>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for buku in buku_list %}
+                <tr>
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">{{ loop.index }}</td>
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">{{ buku[1] }}</td> <!-- judul_buku -->
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">{{ buku[2] }}</td> <!-- genre -->
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                        <a href="{{ url_for('edit_buku', id_buku=buku[0]) }}">Edit</a> <!-- id_buku -->
+                        |
+                        <form action="{{ url_for('hapus_buku', id_buku=buku[0]) }}" method="POST" style="display: inline;">
+                            <button type="submit" style="background: none; border: none; color: red; cursor: pointer;" onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button style="margin-top: 20px; padding: 10px 20px; background-color: green; color: white; border: none;">
+        <a href="{{ url_for('tambah_buku') }}" style="text-decoration: none; color: white;">Tambah Buku</a>
+    </button>
+</main>
+
+{% endblock %}

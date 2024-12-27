@@ -1,11 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>CRUD tabel peminjam</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <h1>Daftar Akun User</h1>
+    <button onclick="window.location.href='/'">Kembali</button>
+    <br><br>
+    <button onclick="window.location.href='/admin_peminjaman'">Peminjaman</button>
+    <button onclick="window.location.href='/daftar_buku'">Daftar Buku</button>
+    <button onclick="window.location.href='/petugas'">Petugas</button>
+</header>
+<main>
+    <table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid black;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">No</th>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">Nama Peminjam</th>
+                <th style="border: 1px solid black; text-align: left; padding: 8px; background-color: #f2f2f2;">Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for peminjam in peminjam_list %}
+                <tr>
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">{{ loop.index }}</td>
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">{{ peminjam[1] }}</td> <!-- nama_peminjam -->
+                    <td style="border: 1px solid black; text-align: left; padding: 8px;">{{ peminjam[2] }}</td> <!-- password -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}
